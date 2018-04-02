@@ -1,0 +1,51 @@
+//第一种是冒泡排序
+
+#include<stdio.h>
+int main(){
+	int N=100,m,i,j,temp;
+	int a[N];
+	scanf("%d",&m);
+	for(i=0;i<m;i++){
+		scanf("%d",&a[i]);
+	}
+	for(i=0;i<m;i++){        //关键在于和相邻的元素比较交换，比较完所有元素为止；   
+		for(j=m-1;j>i;j--) {
+			if(a[j]<a[j-1]){
+				  temp=a[j];
+			    a[j]=a[j-1];
+			    a[j-1]=temp;
+			}
+		}
+	}
+	for(i=0;i<m;i++){
+		printf("%d ",a[i]);
+	}
+} 
+
+//第二种是插入排序
+
+#include<stdio.h>
+int main(){
+	int N=100,m,i,j,key;
+	int a[N];
+	scanf("%d",&m);
+	for(i=0;i<m;i++){
+		scanf("%d",&a[i]);
+	}
+	for(i=1;i<m;i++){
+		j=i;
+		key=a[i];
+		while ((key<a[j-1])&&j>0){  //确定一个key元素，依次与其比较找到合适的位置插入key元素；
+			a[j]=a[j-1];
+			j--;
+		}
+		a[j]=key;
+	}
+	for(i=0;i<m;i++){
+		printf("%d ",a[i]);
+	}
+} 
+
+//冒泡和插入排序十分相似，但是还是存在些许的差别
+//首先，冒泡排序，每次都会找出一个当前序列中最小或者最大的元素，然后将当前序列减一，继续找出最小元素并排序；
+//对于插入排序，保证当前的序列中的所有元素都保持为正确排序序列，然后当前序列加一，继续进行排序；
